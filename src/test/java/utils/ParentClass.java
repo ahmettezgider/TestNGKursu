@@ -3,6 +3,8 @@ package utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
@@ -16,6 +18,7 @@ public class ParentClass {
 
     public ParentClass(){
         driver = Driver.getDriver();
+        driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
@@ -45,6 +48,36 @@ public class ParentClass {
                 break;
         }
     }
+
+    public void hover(WebElement element){
+        hover(element, 10);
+    }
+
+    public void hover(WebElement element, long milis){
+        new Actions(driver).moveToElement(element).pause(milis).build().perform();
+    }
+
+    public boolean isExist(By locator){
+        return driver.findElements(locator).size()>0;
+    }
+
+    public boolean isExist1(By locator){
+        try {
+            driver.findElement(locator);
+            return true;
+        }catch (Exception e){
+           return false;
+        }
+    }
+
+    public void sleep(long milis){
+        try {
+            Thread.sleep(milis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @AfterSuite
     public void afterSuite(){

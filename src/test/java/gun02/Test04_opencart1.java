@@ -32,15 +32,12 @@ public class Test04_opencart1 extends ParentClass {
         sendkeysTo(lSearchInput_interface, "mac");
         //waitFor(lSearchButton, clickable);
         clickTo(lSearchButton);
-        List<WebElement> menuler = driver.findElements(By.cssSelector(""));
+        //List<WebElement> menuler = driver.findElements(By.cssSelector("ul[class='nav navbar-nav']>li"));
+        List<WebElement> menuler = driver.findElements(By.cssSelector("ul.nav.navbar-nav > li"));
 
         for (int i = 0; i < menuler.size(); i++) {
             Assert.assertEquals(menuler.get(i).getText(), menu.get(i));
         }
-
-
-
-
 
 
         //driver.get("https://www.google.com");
