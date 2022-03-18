@@ -1,0 +1,17 @@
+
+url = "http://opencart.abstracta.us"
+--------------------------------------------------------------------
+    Senaryo 1
+        1.  Siteye gidin
+        2.  "Mac" kelimesini arattirin
+        3.  listelenen tümü ürünlerde "Mac" kelimesinin gectiginden emin olun.
+
+--------------------------------------------------------------------
+    Senaryo 2
+        1.  Siteye gidin
+        2.  Components menüsünden Monitors"u tiklayin
+        3.  Listelenen monitörlerden random birini secin
+        4.  Add wish yapin (favorilere alin, kalbe tikla)
+        5.  login olun ve wish listede secilen ürünün oldugunu assert edin.
+
+--------------------------------------------------------------------

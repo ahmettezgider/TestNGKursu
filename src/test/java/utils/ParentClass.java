@@ -7,9 +7,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 
 import java.time.Duration;
+import java.util.regex.Pattern;
 
 public class ParentClass {
 
@@ -23,16 +25,39 @@ public class ParentClass {
     }
 
 
+    /**
+     * aldigi url"e driver.get eden method
+     * @param url string
+     */
     public void openSite(String url){
         driver.get(url);
     }
 
+    /**
+     * aldigi By class"indan locatora click eden method
+     * @param locator By
+     */
     public void clickTo(By locator){
         wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
     }
 
+    /**
+     * aldigi WebElement clickable oluncaya kadar bekler ve click eder
+     * @param element WebElement
+     */
+    public void clickTo(WebElement element){
+
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
     public void sendkeysTo(By locator, String text){
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).sendKeys(text);
+    }
+    public void sendkeysTo(By locator, String text, boolean clear){
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        if (clear)
+            element.clear();
+        element.sendKeys(text);
     }
 
     public void waitFor(By locator, WaitConditions waitCondition){
@@ -78,9 +103,14 @@ public class ParentClass {
         }
     }
 
+    public void verifyTextIn(By locator, String str){
+        WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        Assert.assertTrue(notification.getText().toLowerCase().contains(str.toLowerCase()));
+    }
 
     @AfterSuite
     public void afterSuite(){
+        sleep(3000);
         Driver.quitDriver();
     }
 

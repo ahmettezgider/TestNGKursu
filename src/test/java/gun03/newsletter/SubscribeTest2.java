@@ -1,6 +1,7 @@
 package gun03.newsletter;
 
 import org.testng.annotations.Test;
+import pages.HomePage;
 
 public class SubscribeTest2 extends ParentTestClass{
 

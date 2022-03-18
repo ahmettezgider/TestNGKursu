@@ -1,9 +1,7 @@
 package gun03.newsletter;
 
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
-import utils.Driver;
-import utils.ParentClass;
+import pages.HomePage;
 
 public class SubscribeTest extends ParentTestClass {
 
