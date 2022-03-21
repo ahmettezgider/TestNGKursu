@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="My First Test Suite">
+    <test verbose="2" preserve-order="true" name="BasicTest">
+        <classes>
+            <class name="gun06.tests.TestClass1">
+                <methods>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                    <exclude name="test3"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

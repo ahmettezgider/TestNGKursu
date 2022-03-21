@@ -33,7 +33,12 @@
 
 
 
+    mxl"de  suit iinde 2 test olacak
 
+    test1 TestGrup1
+
+    test2 TestGrup2, TestGrup3
+        test2 calistirilmayacak
 
 
 
