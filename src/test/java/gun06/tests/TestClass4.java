@@ -18,7 +18,6 @@ public class TestClass4 {
     @Parameters("browserName")
     public void beforeTest(String browser){
         driver = Driver.getDriver(browser);
-
         //driver = Driver.getDriver(Browser.valueOf(browser));
         // getDriver() methodu Browser enum"i aliyor ise
         // gelen string Browser.valueOf(browser) ile enuma dönüstürülür
@@ -40,8 +39,6 @@ public class TestClass4 {
          */
     }
 
-
-
     @Test
     public void gotoUrl(){
         driver.get("http://opencart.abstracta.us/");
@@ -59,12 +56,13 @@ public class TestClass4 {
     @Parameters("browserName")
     public void afterTest(String bName){
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         System.out.println(bName);
-        driver.quit();
+        //driver.quit();
+        Driver.quitDriver();
     }
 
 }
