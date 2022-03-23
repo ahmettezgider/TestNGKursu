@@ -13,13 +13,13 @@ public class TestLogin extends TestBaseClass{
         sitePage.gotoURL();
     }
 
-    @Test(dependsOnMethods = {"gotoURL"})
+    @Test(dependsOnMethods = {"gotoURL"}, priority = 1)
     @Parameters({"username", "password"})
     public void login(String username, String password){
         sitePage.login(username, password);
     }
 
-    @Test
+    @Test(priority = 2)
     public void logOut(){
         sitePage.logOut();
     }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <parameter name="username" value="testngkurs@gmail.com"/>
+    <parameter name="password" value="testngkurs"/>
+    <parameter name="browser" value="chrome"/>
+
+    <test verbose="2" preserve-order="true" name="TestLogin">
+        <classes>
+            <class name="gun07.TestLoginComment.TestLogin"/>
+        </classes>
+    </test>
+
+    <test verbose="2" preserve-order="true" name="TestLogin1">
+        <parameter name="contactText" value="deneme text"/>
+        <classes>
+            <class name="gun07.TestLoginComment.TestAccount"/>
+        </classes>
+    </test>
+</suite>

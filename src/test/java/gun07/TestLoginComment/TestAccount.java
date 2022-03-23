@@ -8,6 +8,18 @@ public class TestAccount extends TestBaseClass{
     SitePage sitePage;
 
     @Test
+    public void gotoURL(){
+        sitePage  = new SitePage(driver);
+        sitePage.gotoURL();
+    }
+
+    @Test(dependsOnMethods = {"gotoURL"}, priority = 1)
+    @Parameters({"username", "password"})
+    public void login(String username, String password){
+        sitePage.login(username, password);
+    }
+
+    @Test(priority = 3)
     @Parameters({"contactText"})
     public void fillContactUs(String text){
         sitePage.gotoContact();
@@ -15,7 +27,7 @@ public class TestAccount extends TestBaseClass{
         sitePage.clickToSubmit();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 4)
     public void end(){
         sitePage.logOut();
     }

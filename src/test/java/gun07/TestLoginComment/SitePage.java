@@ -1,7 +1,9 @@
 package gun07.TestLoginComment;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,7 +20,7 @@ public class SitePage {
     By lPassword = By.id("input-password");
     By lLoginSubmit = By.cssSelector("input[value='Login']");
     By lMenuMyAccount = By.xpath("//a[@title='My Account']");
-    By lSubmit = By.cssSelector("input-enquiry");
+    By lSubmit = By.cssSelector("input[type='submit']");
     By lInquery = By.id("input-enquiry");
 
 
@@ -63,6 +65,7 @@ public class SitePage {
     }
 
     public void clickToSubmit(){
+        scrollIntoView(lSubmit);
         wait.until(ExpectedConditions.elementToBeClickable(lSubmit)).click();
     }
 
@@ -73,6 +76,10 @@ public class SitePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(getXPathOf("Login")));
     }
 
+    public void scrollIntoView(By locator){
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView()", element);
+    }
 
 
 }

@@ -10,12 +10,10 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
-import java.time.Duration;
 
 public class TestBaseClass {
 
     protected WebDriver driver;
-
 
     @BeforeSuite
     public void beforeSuite(){
@@ -36,11 +34,12 @@ public class TestBaseClass {
                 driver = new ChromeDriver();
                 break;
         }
+        driver.manage().window().maximize();
     }
 
     @AfterTest
     public void afterTest(){
-        System.out.println(driver);
+        //System.out.println(driver);
         driver.quit();
     }
 
