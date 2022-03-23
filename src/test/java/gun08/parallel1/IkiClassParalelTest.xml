@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" parallel="methods" thread-count="2">
+
+    <parameter name="username" value="testngkurs@gmail.com"/>
+    <parameter name="password" value="testngkurs"/>
+    <parameter name="contactText" value="deneme text"/>
+    <parameter name="browser" value="chrome"/>
+
+    <test verbose="2" preserve-order="true" name="TestLogin">
+        <classes>
+            <class name="gun08.parallel1.TestLogin"/>
+            <class name="gun08.parallel1.TestAccount"/>
+        </classes>
+    </test>
+</suite>

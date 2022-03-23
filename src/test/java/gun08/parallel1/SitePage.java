@@ -1,4 +1,4 @@
-package gun07.TestLoginComment;
+package gun08.parallel1;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -26,7 +25,6 @@ public class SitePage {
 
     public SitePage(WebDriver driver){
         this.driver = driver;
-        System.out.println("---" + this.driver);
         wait = new WebDriverWait(this.driver, Duration.ofSeconds(10));
     }
 
@@ -73,7 +71,8 @@ public class SitePage {
 
     public void logOut(){
         driver.findElement(lMenuMyAccount).click();
-        driver.findElement(getXPathOf("Logout")).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(getXPathOf("Logout"))).click();
+        //driver.findElement(getXPathOf("Logout")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(getXPathOf("Login")));
     }
 

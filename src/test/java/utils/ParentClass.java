@@ -46,7 +46,6 @@ public class ParentClass {
      * @param element WebElement
      */
     public void clickTo(WebElement element){
-
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
@@ -107,6 +106,7 @@ public class ParentClass {
         WebElement notification = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         Assert.assertTrue(notification.getText().toLowerCase().contains(str.toLowerCase()));
     }
+
 
     @AfterSuite
     public void afterSuite(){
