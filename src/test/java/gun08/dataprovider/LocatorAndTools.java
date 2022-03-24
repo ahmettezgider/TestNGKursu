@@ -9,6 +9,7 @@ public class LocatorAndTools {
     public static By lPassword = By.id("input-password");
     public static By lLoginSubmit = By.cssSelector("input[value='Login']");
     public static By lLogout = By.xpath("//a[text()='Logout']");
+    public static By lMyAccount = By.xpath("//a[@title='My Account']");
     public static By lNotification = By.cssSelector("div.alert.alert-danger");
 
     public static void getDriverStatikSample(String username){

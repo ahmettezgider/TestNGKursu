@@ -11,7 +11,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 
 import java.time.Duration;
-import java.util.regex.Pattern;
 
 public class ParentClass {
 

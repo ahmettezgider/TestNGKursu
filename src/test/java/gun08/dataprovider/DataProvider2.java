@@ -32,9 +32,8 @@ public class DataProvider2 extends ParentClass {
             verifyTextIn(lNotification, "Warning");
         }else{
             waitFor(lLogout, WaitConditions.exist);
-            /*
-                logout yapmak lazim
-             */
+            clickTo(lMyAccount);
+            clickTo(lLogout);
         }
     }
 
@@ -56,8 +55,8 @@ public class DataProvider2 extends ParentClass {
                 {"hbendb@imdb.com", "mCdonxCK2Ix", 0},
                 {"cburnhillc@stumbleupon.com", "s9KIhZYWF57", 0},
                 {"dcastelaind@timesonline.co.uk", "zEWuz4URBkP", 0},
-                {"lcradducke@google.co.jp", "RUIP3F", 0},
                 {"testngkurs@gmail.com", "testngkurs", 1},
+                {"lcradducke@google.co.jp", "RUIP3F", 0}
         };
         return data;
     }
