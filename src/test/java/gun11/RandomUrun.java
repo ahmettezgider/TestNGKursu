@@ -3,12 +3,16 @@ package gun11;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.ParentClass;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
@@ -17,6 +21,7 @@ import static gun11.RandomUrunLocators.*;
 import static gun11.RandomUrunLocatorsClass.*;
 
 public class RandomUrun extends ParentClass {
+
 
     List<WebElement> products;
     List<WebElement> productPrices;
@@ -104,6 +109,12 @@ interface RandomUrunLocators {
 class RandomUrunLocatorsClass {
     public static final String url1 = "http://opencart.abstracta.us/";
     public static final By lSearch1 = By.cssSelector("input[name='search']");
+
+    public By getXpath(LocalDate date){
+        String ay = date.getMonth().toString();
+        int gun = date.getDayOfMonth();
+        return By.xpath("//div[./h2[contains(text(), '" + ay + "')]]//*[contains(text(),'" + gun +"')]");
+    }
 
 
 }

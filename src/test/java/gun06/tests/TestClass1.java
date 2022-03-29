@@ -6,6 +6,11 @@ public class TestClass1 {
 
     @Test(groups = {"TestGrup1"})
     public void test1(){
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.out.println("Test-1");
     }
 
