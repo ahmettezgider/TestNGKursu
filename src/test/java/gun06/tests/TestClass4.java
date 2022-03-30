@@ -1,15 +1,10 @@
 package gun06.tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
-import utils.Browser;
-import utils.Driver;
+import utils.DriverSingleton;
 
 public class TestClass4 {
     WebDriver driver;
@@ -17,7 +12,7 @@ public class TestClass4 {
     @BeforeTest
     @Parameters("browserName")
     public void beforeTest(String browser){
-        driver = Driver.getDriver(browser);
+        driver = DriverSingleton.getDriver(browser);
         //driver = Driver.getDriver(Browser.valueOf(browser));
         // getDriver() methodu Browser enum"i aliyor ise
         // gelen string Browser.valueOf(browser) ile enuma dönüstürülür
@@ -62,7 +57,7 @@ public class TestClass4 {
         }
         System.out.println(bName);
         //driver.quit();
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 
 }

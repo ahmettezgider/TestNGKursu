@@ -3,7 +3,7 @@ package gun02;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
-import utils.Driver;
+import utils.DriverSingleton;
 
 public class Test01 {
 
@@ -11,7 +11,7 @@ public class Test01 {
 
     @Test
     void t1(){
-        driver = Driver.getDriver();
+        driver = DriverSingleton.getDriver();
     }
 
     @Test
@@ -28,7 +28,7 @@ public class Test01 {
 
     @AfterTest
     public void aTest(){
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 
 }

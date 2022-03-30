@@ -18,7 +18,7 @@ public class ParentClass {
     protected WebDriverWait wait;
 
     public ParentClass(){
-        driver = Driver.getDriver();
+        driver = DriverSingleton.getDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
@@ -110,7 +110,7 @@ public class ParentClass {
     @AfterSuite
     public void afterSuite(){
         sleep(3000);
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 
 

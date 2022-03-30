@@ -2,7 +2,7 @@ package pages;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import utils.Driver;
+import utils.DriverSingleton;
 
 public class BaseTest {
 
@@ -16,7 +16,7 @@ public class BaseTest {
 
     @AfterSuite
     public void afterSuite(){
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 
 }

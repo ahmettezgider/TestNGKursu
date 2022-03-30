@@ -2,7 +2,7 @@ package gun03.newsletter;
 
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import utils.Driver;
+import utils.DriverSingleton;
 
 public class ParentTestClass {
 
@@ -15,6 +15,6 @@ public class ParentTestClass {
 
     @AfterSuite
     public void afterSuite(){
-        Driver.quitDriver();
+        DriverSingleton.quitDriver();
     }
 }

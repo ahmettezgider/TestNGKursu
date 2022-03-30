@@ -1,6 +1,5 @@
 package utils;
 
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,57 +7,46 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
-    // singleton static driver. Driver class"i bize driver üretecek
 
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
+    private static ThreadLocal<Browser> browserNames = new ThreadLocal<>();
 
-    public static WebDriver getDriver(){
-        return getDriver("chrome");
+    public static WebDriver getDriver() {
+        return getDriver(Browser.CHROME);
     }
 
-    public static WebDriver getDriver(String browser){
-        if (driver == null) {
-            switch (browser.toLowerCase()){
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    break;
-                default:
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-            }
-        }
-        return driver;
-    }
-
-    public static WebDriver getDriver(Browser browser){
-        if (driver == null) {
-            switch (browser){
+    public static WebDriver getDriver(Browser browser) {
+        if (drivers.get() == null) {
+            browserNames.set(browser);
+            switch (browser) {
                 case FIREFOX:
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    drivers.set(new FirefoxDriver());
                     break;
                 case EDGE:
                     WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
+                    drivers.set(new EdgeDriver());
                     break;
                 default:
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    drivers.set(new ChromeDriver());
+                    break;
             }
         }
-        return driver;
+        return drivers.get();
     }
 
 
-    public static void quitDriver(){
-        if (driver != null){
-            driver.quit();
-            driver = null;
+    public static void quitDriver() {
+        if (drivers.get() != null) {
+            drivers.get().quit();
+            drivers.set(null);
         }
     }
+
+    public static Browser getBrowser(){
+        return browserNames.get();
+    }
+
+
 }
