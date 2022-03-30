@@ -1,7 +1,9 @@
 package gun12;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import utils.ParentClass;
 
@@ -15,12 +17,14 @@ public class Takvim extends ParentClass {
     By lDate = By.xpath("(//i[@class='fa fa-calendar'])[3]");
     By lmonthAndYears = By.xpath("(//th[@class='picker-switch'])[4]");
     By lNext = By.xpath("(//th[@class='picker-switch'])[4]/following-sibling::th[@class='next']");
+    By ldays = By.xpath("(//table[@class='table-condensed'])[4]//td");
 
-    String year="June 2023";
+    String year="June 2012";
 
     List<WebElement> monthAndYear;
     String monthYearString;
     String [] array;
+    String dayString = "10";
 
     @Test
     public void test1(){
@@ -37,7 +41,31 @@ public class Takvim extends ParentClass {
             clickTo(lNext);
         }
 
+        /*
+        List<WebElement> days = driver.findElements(ldays);
+        for (int i = 0; i < days.size(); i++) {
+            days = driver.findElements(ldays);
+            if (days.get(i).getText().contains(dayString)) {
+                days.get(i).click();
+            }
+        }
+         */
+
+        List<WebElement> days = driver.findElements(ldays);
+        for (WebElement day : days) {
+            if (day.getText().contains(dayString)) {
+                day.click();
+                //clickByAction(day);
+                //clickByJS(day);
+                break;
+            }
+        }
+
+        clickTo(driver.findElement(lDate));
+
 
     }
+
+
 
 }

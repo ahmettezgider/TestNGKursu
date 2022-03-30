@@ -2,6 +2,7 @@ package utils;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -106,10 +107,17 @@ public class ParentClass {
         Assert.assertTrue(notification.getText().toLowerCase().contains(str.toLowerCase()));
     }
 
+    public void clickByJS(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
+
+    public void clickByAction(WebElement element){
+        new Actions(driver).moveToElement(element).click().perform();
+    }
 
     @AfterSuite
     public void afterSuite(){
-        sleep(3000);
+        sleep(7000);
         DriverSingleton.quitDriver();
     }
 
